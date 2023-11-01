@@ -3,9 +3,13 @@ from phonenumbers import geocoder
 
 
 def country(phone_number:int) -> str:
-    number = phonenumbers.parse(phone_number)
-    location = geocoder.description_for_number(number, 'fa')
-    return location
+    try:
+        number = phonenumbers.parse(phone_number)
+        location = geocoder.description_for_number(number, 'fa')
+    except:
+        location = "Err"
+    finally:
+        return location
 
 
 if __name__ == '__main__':
